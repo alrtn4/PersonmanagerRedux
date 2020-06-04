@@ -1,14 +1,14 @@
 import React from 'react';
 import Person from './Person';
 
-const Persons = ({persons , deleted}) => {
+const Persons = ({persons , deleted , changed}) => {
     return <div>
         {persons.map(person => (
             <Person 
                 key = {person.id} 
-                firstname = {person.firstname} 
-                lastname = {person.lastname} 
+                fullName = {person.fullName} 
                 deleted = {() => {deleted(person.id)}}
+                change = {(event , id) => {changed(event , person.id)}}
             />             
         ))}
     </div>;
