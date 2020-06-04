@@ -4,9 +4,9 @@ import Persons from './components/person/Persons';
 class App extends Component {
     state = { 
         persons : [
-            {firstname : 'کیا' , lastname : 'احمدی'} ,
-            {firstname : 'کیارش' , lastname : 'غلامی'} ,
-            {firstname : 'کیانوش' , lastname : 'رفعتی'}
+            {id : 1 , firstname : 'کیا' , lastname : 'احمدی'} ,
+            {id : 2 , firstname : 'کیارش' , lastname : 'غلامی'} ,
+            {id : 3 , firstname : 'کیانوش' , lastname : 'رفعتی'}
         ] ,
 
         showPersons : false 
@@ -18,6 +18,12 @@ class App extends Component {
         this.setState({ showPersons : !this.state.showPersons}) ;
     }
 
+    handleDeletePerson = id => {
+        const persons = [...this.state.persons] ;
+        const filteredPersons = persons.filter(p => p.id !== id) ;
+        this.setState({ persons : filteredPersons });
+    }    
+
     render() { 
         const {persons , showPersons} = this.state ;
         const styles = {textAlign : 'center'} ;
@@ -25,7 +31,7 @@ class App extends Component {
         let person = null ;
 
         if(showPersons) {
-            person = <Persons persons = {persons} /> ;
+            person = <Persons persons = {persons} deleted={this.handleDeletePerson}/> ;
         }
 
         let buttonStyle = {

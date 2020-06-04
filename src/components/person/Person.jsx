@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Person = ({firstname , lastname}) => {
+const Person = ({firstname , lastname , deleted}) => {
     return ( 
         <div>
-            <p>{firstname} {lastname}</p>
+            <p onClick={deleted} style={{cursor : 'pointer'}}> {firstname} {lastname}</p>
         </div>
      );
 }

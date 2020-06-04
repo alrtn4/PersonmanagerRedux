@@ -1,10 +1,15 @@
 import React from 'react';
 import Person from './Person';
 
-const Persons = ({persons}) => {
+const Persons = ({persons , deleted}) => {
     return <div>
         {persons.map(person => (
-            <Person firstname = {person.firstname} lastname = {person.lastname} />
+            <Person 
+                key = {person.id} 
+                firstname = {person.firstname} 
+                lastname = {person.lastname} 
+                deleted = {() => {deleted(person.id)}}
+            />             
         ))}
     </div>;
 }
