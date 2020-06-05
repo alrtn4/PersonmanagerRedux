@@ -5,7 +5,7 @@ const Person = ({fullName , deleted , change}) => {
     return ( 
         <div className='person'>
             <p> {fullName} </p>
-            <input type='text' onChange={change} />
+            <input type='text' onChange={change} placeholder={fullName}/>
             <button onClick={deleted}>حذف</button>
         </div>
      );

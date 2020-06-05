@@ -28,9 +28,20 @@ class App extends Component {
         const {persons : allPersons} = this.state ;
 
         const personIndex = allPersons.findIndex(p => p.id === id) ;
-        console.log(event.target.value) ;
         allPersons[personIndex].fullName = event.target.value ;
         const persons = [...allPersons] ;
+        this.setState({ persons }) ;
+    }
+
+    handleAddPerson = () => {
+        const persons = [...this.state.persons] ;
+        let person = {
+            id : persons.length + 1 ,
+            fullName : document.getElementById('newName').value 
+        }
+    
+        console.log(person.id) ;
+        persons.push(person) ;
         this.setState({ persons }) ;
     }
 
@@ -51,17 +62,21 @@ class App extends Component {
         let buttonStyle = {
             padding: '1em' ,
             fontFamily: 'BYekan' ,
-            backgroundColor: 'pink'
+            backgroundColor: 'pink' ,
+            display: 'block' ,
+            margin: '20px auto'
         }
 
         return ( 
             <div style={styles}>
                 <h2>مدیریت کننده اشخاص</h2>
                 <h4>تعداد اشخاص {persons.length} نفر می باشد</h4>
-
-                {person}
+                <input type='text' id='newName' placeholder='نام شخص' style={{direction: 'rtl'}}/>
+                <button onClick={this.handleAddPerson} >اضافه کن</button>
 
                 <button onClick={this.handleShowPersons}  style={buttonStyle}>اشخاص را نشان بده</button>
+
+                {person}
             </div> 
         );
     }
