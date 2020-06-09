@@ -69,12 +69,14 @@ class App extends Component {
 
         return ( 
             <div style={styles}>
-                <h2>مدیریت کننده اشخاص</h2>
-                <h4>تعداد اشخاص {persons.length} نفر می باشد</h4>
-                <input type='text' id='newName' placeholder='نام شخص' style={{direction: 'rtl'}}/>
-                <button onClick={this.handleAddPerson} >اضافه کن</button>
-
-                <button onClick={this.handleShowPersons}  style={buttonStyle}>اشخاص را نشان بده</button>
+                <div>
+                    <h2>مدیریت کننده اشخاص</h2>
+                    <h4>تعداد اشخاص {persons.length} نفر می باشد</h4>
+                    <input type='text' id='newName' placeholder='نام شخص' style={{direction: 'rtl'}}/>
+                    <button onClick={this.handleAddPerson} >اضافه کن</button>
+                </div>
+                
+                <button onClick={this.handleShowPersons} className='btn btn-sm btn-success fa fa-plus-square'></button>
 
                 {person}
             </div> 
