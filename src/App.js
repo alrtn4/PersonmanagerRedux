@@ -9,10 +9,10 @@ class App extends Component {
             {id : 3 , fullName : 'کیانوش رفعتی'}
         ] ,
 
-        showPersons : false 
+        showPersons : true 
     } ;
 
-    showPersons = false ;
+    showPersons = true ;
 
     handleShowPersons = () => {
         this.setState({ showPersons : !this.state.showPersons}) ;
@@ -40,14 +40,14 @@ class App extends Component {
             fullName : document.getElementById('newName').value 
         }
     
-        console.log(person.id) ;
+        // console.log(person.id) ;
         persons.push(person) ;
         this.setState({ persons }) ;
     }
 
     render() { 
         const {persons , showPersons} = this.state ;
-        const styles = {textAlign : 'center'} ;
+        // const styles = {textAlign : 'center'} ;
 
         let person = null ;
 
@@ -59,24 +59,55 @@ class App extends Component {
                     /> ;
         }
 
-        let buttonStyle = {
-            padding: '1em' ,
-            fontFamily: 'BYekan' ,
-            backgroundColor: 'pink' ,
-            display: 'block' ,
-            margin: '20px auto'
-        }
+        // let buttonStyle = {
+        //     padding: '1em' ,
+        //     fontFamily: 'BYekan' ,
+        //     backgroundColor: 'pink' ,
+        //     display: 'block' ,
+        //     margin: '20px auto'
+        // }
 
         return ( 
-            <div style={styles}>
+            <div className='rtl text-center'>
                 <div>
-                    <h2>مدیریت کننده اشخاص</h2>
-                    <h4>تعداد اشخاص {persons.length} نفر می باشد</h4>
-                    <input type='text' id='newName' placeholder='نام شخص' style={{direction: 'rtl'}}/>
-                    <button onClick={this.handleAddPerson} >اضافه کن</button>
+                    <div className='alert alert-info'>
+                        <h2>مدیریت کننده اشخاص</h2>
+                    </div>
+                    
+                    <h4 className='alert alert-light'>
+                        تعداد اشخاص {' '}
+                        <span className='badge badge-pill badge-success'>
+                            {persons.length}
+                        </span> {' '}
+                         نفر می باشد
+                    </h4>
+
+                    <div className='m-2 p-2'>
+                        <form className='form-inline justify-content-center' onSubmit={event => event.preventDefault()}>
+                            <div className='input-group w-25'>
+                                <input 
+                                    className='form-control'
+                                    type='text' 
+                                    id='newName' 
+                                    placeholder='نام بهم بده' 
+                                />
+                                <div className='input-group-prepend'>
+                                    <button 
+                                        type='submit' 
+                                        className='btn btn-sm btn-success fa fa-plus-square' 
+                                        onClick={this.handleAddPerson} 
+                                    />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                
-                <button onClick={this.handleShowPersons} className='btn btn-sm btn-success fa fa-plus-square'></button>
+
+                <button 
+                    onClick={this.handleShowPersons} 
+                    className='btn btn-info'>
+                        اشخاص را نشان بده
+                </button>
 
                 {person}
             </div> 
