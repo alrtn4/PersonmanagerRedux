@@ -41,9 +41,12 @@ class App extends Component {
         }
     
         // console.log(person.id) ;
-        persons.push(person) ;
-        this.setState({ persons }) ;
+        if(person.fullName !== '' && person.fullName !== ' ' ){
+            persons.push(person) ;
+            this.setState({ persons }) ;
+        }
     }
+
 
     render() { 
         const {persons , showPersons} = this.state ;
@@ -66,7 +69,12 @@ class App extends Component {
         //     display: 'block' ,
         //     margin: '20px auto'
         // }
-
+        let badgeStyle = [];
+        if (persons.length >= 3) badgeStyle.push('badge-info') ;
+        if (persons.length <= 2) badgeStyle.push('badge-warning') ;
+        if (persons.length <= 1) badgeStyle.push('badge-danger') ;
+        console.log(badgeStyle) ;
+    
         return ( 
             <div className='rtl text-center'>
                 <div>
@@ -76,7 +84,7 @@ class App extends Component {
                     
                     <h4 className='alert alert-light'>
                         تعداد اشخاص {' '}
-                        <span className='badge badge-pill badge-success'>
+                        <span className={`badge badge-pill ${badgeStyle.join(' ')}`}>
                             {persons.length}
                         </span> {' '}
                          نفر می باشد
@@ -105,7 +113,7 @@ class App extends Component {
 
                 <button 
                     onClick={this.handleShowPersons} 
-                    className='btn btn-info'>
+                    className = {showPersons ? 'btn btn-info' : 'btn btn-danger'}  >
                         اشخاص را نشان بده
                 </button>
 

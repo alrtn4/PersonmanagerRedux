@@ -14,7 +14,7 @@ const Person = ({fullName , deleted , change}) => {
                         placeholder={fullName}
                     />
                     <div className='input-group-prepend'>
-                        <butto 
+                        <button  
                             className='btn btn-sm btn-danger fa fa-trash' 
                             onClick={deleted} 
                         />
