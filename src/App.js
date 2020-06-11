@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import {Button , Alert, Badge} from 'react-bootstrap' ;
+import { Button } from 'react-bootstrap' ;
 import {ToastContainer , toast} from 'react-toastify' ;
 import 'react-toastify/dist/ReactToastify.css'
 
 import Persons from './components/person/Persons';
+import Header from './components/common/Header'
 
 class App extends Component {
     state = { 
@@ -49,7 +50,6 @@ class App extends Component {
             fullName : document.getElementById('newName').value 
         }
     
-        // console.log(person.id) ;
         if(person.fullName !== '' && person.fullName !== ' ' ){
             persons.push(person) ;
             this.setState({ persons }) ;
@@ -65,8 +65,7 @@ class App extends Component {
 
     render() { 
         const {persons , showPersons} = this.state ;
-        // const styles = {textAlign : 'center'} ;
-
+    
         let person = null ;
 
         if(showPersons) {
@@ -77,33 +76,15 @@ class App extends Component {
                     /> ;
         }
 
-        // let buttonStyle = {
-        //     padding: '1em' ,
-        //     fontFamily: 'BYekan' ,
-        //     backgroundColor: 'pink' ,
-        //     display: 'block' ,
-        //     margin: '20px auto'
-        // }
-
-        let badgeStyle = '';
-        if (persons.length >= 3) badgeStyle = 'info' ;
-        if (persons.length <= 2) badgeStyle = 'warning' ;
-        if (persons.length <= 1) badgeStyle = 'danger' ;
+                   let s='مدیریت کننده اشخاص' ;
     
         return ( 
             <div className='rtl text-center'>
                 <div>
-                    <Alert variant='info'>
-                        <h2>مدیریت کننده اشخاص</h2>
-                    </Alert>
-                    
-                    <Alert variant='light'>
-                        تعداد اشخاص {' '}
-                        <Badge pill variant={`${badgeStyle}`}>
-                            {persons.length}
-                        </Badge> {' '}
-                         نفر می باشد
-                    </Alert>
+
+
+
+                    <Header persons={persons} title={s} />
 
                     <div className='m-2 p-2'>
                         <form className='form-inline justify-content-center' onSubmit={event => event.preventDefault()}>
