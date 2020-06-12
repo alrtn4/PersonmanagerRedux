@@ -22,7 +22,7 @@ const Person = ({fullName , deleted , change}) => {
                 </div>
             </div>
         </div>
-     );
+    );
 }
  
 export default Person;
