@@ -1,18 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Alert, Badge } from 'react-bootstrap';
 import simpleContext from './context/context';
 
 const Header = () => {
 
-    // let badgeStyle = '';
-    // if (persons.length >= 3) badgeStyle = 'info';
-    // if (persons.length <= 2) badgeStyle = 'warning';
-    // if (persons.length <= 1) badgeStyle = 'danger';
+    const context = useContext(simpleContext) ;
+
+    let { persons } = context.state ;
+
+    let badgeStyle = '';
+    if (persons.length >= 3) badgeStyle = 'info';
+    if (persons.length <= 2) badgeStyle = 'warning';
+    if (persons.length <= 1) badgeStyle = 'danger';
 
 
     return (
-        <simpleContext.Consumer>
-            {context => (
+        // <simpleContext.Consumer>
+        //     {context => (
                 <div>
                     <Alert variant='info'>
                         <h2>{context.state.appTitle}</h2>
@@ -20,17 +24,17 @@ const Header = () => {
 
                     <Alert variant='light'>
                         تعداد اشخاص {' '}
-                        <Badge pill >
+                        <Badge pill variant={badgeStyle}>
                             {context.state.persons.length}
                         </Badge> {' '}
                         نفر می باشد
                     </Alert>
                 </div>
 
-            )}
+            // )}
 
             
-        </simpleContext.Consumer>
+    //     </simpleContext.Consumer>
     )
 }
 

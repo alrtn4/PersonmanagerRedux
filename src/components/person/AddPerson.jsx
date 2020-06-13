@@ -1,12 +1,14 @@
 import { Button } from 'react-bootstrap';
-import  React  from 'react';
+import  React, { useContext }  from 'react';
 import simpleContext from '../common/context/context';
 
 const AddPerson = () => {
 
+    const context = useContext(simpleContext) ;
+
     return (
-        <simpleContext.Consumer>
-            {context => (
+        // <simpleContext.Consumer>
+        //     {context => (
                 <div className='m-2 p-2'>
                     <form className='form-inline justify-content-center'
                         onSubmit={event => event.preventDefault()}
@@ -31,9 +33,9 @@ const AddPerson = () => {
                     </form>
                 </div>
 
-            )} 
+        //     )} 
 
-        </simpleContext.Consumer>
+        // </simpleContext.Consumer>
 
     )
 }
