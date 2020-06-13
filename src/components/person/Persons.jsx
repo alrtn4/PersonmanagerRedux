@@ -7,7 +7,7 @@ const Persons = () => {
     const context = useContext(simpleContext) ;
 
     return <div>
-        {context.state.persons.map(person => (
+        {context.persons.map(person => (
             <Person 
                 key = {person.id} 
                 fullName = {person.fullName} 
