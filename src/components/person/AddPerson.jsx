@@ -1,10 +1,16 @@
 import { Button } from 'react-bootstrap';
-import  React, { useContext }  from 'react';
+import  React, { useContext , useEffect , useRef}  from 'react';
 import simpleContext from '../common/context/context';
 
 const AddPerson = () => {
 
     const context = useContext(simpleContext) ;
+
+    const textInput = useRef(null) ;
+
+    useEffect(() => {
+        textInput.current.focus() ;
+    }) ;
 
     return (
         // <simpleContext.Consumer>
@@ -19,6 +25,7 @@ const AddPerson = () => {
                                 type='text'
                                 id='newName'
                                 placeholder='نام بهم بده'
+                                ref={textInput}
                             />
                             <div className='input-group-prepend'>
                                 <Button

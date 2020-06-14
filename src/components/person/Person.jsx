@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types' ;
 
 const Person = ({fullName , deleted , change}) => {
     return ( 
@@ -22,6 +23,12 @@ const Person = ({fullName , deleted , change}) => {
             </div>
         </div>
     );
+}
+
+Person.propTypes = {
+    fullName : PropTypes.string ,
+    deleted : PropTypes.func ,
+    change : PropTypes.func
 }
  
 export default Person;

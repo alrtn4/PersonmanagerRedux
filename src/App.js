@@ -35,7 +35,7 @@ const App = () => {
     }
     
     const handleChangePerson = (event, id) => {
-        const { persons: allPersons } = getPersons;
+        const allPersons  = getPersons;
     
         const personIndex = allPersons.findIndex(p => p.id === id);
         allPersons[personIndex].fullName = event.target.value;
