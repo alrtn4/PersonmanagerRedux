@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/PersonmanagerRedux/static/css/main.897d10c4.chunk.css",
+    "main.js": "/PersonmanagerRedux/static/js/main.81d4cf34.chunk.js",
+    "main.js.map": "/PersonmanagerRedux/static/js/main.81d4cf34.chunk.js.map",
+    "runtime-main.js": "/PersonmanagerRedux/static/js/runtime-main.bd5f8aed.js",
+    "runtime-main.js.map": "/PersonmanagerRedux/static/js/runtime-main.bd5f8aed.js.map",
+    "static/css/2.49b532b6.chunk.css": "/PersonmanagerRedux/static/css/2.49b532b6.chunk.css",
+    "static/js/2.8f72cbdb.chunk.js": "/PersonmanagerRedux/static/js/2.8f72cbdb.chunk.js",
+    "static/js/2.8f72cbdb.chunk.js.map": "/PersonmanagerRedux/static/js/2.8f72cbdb.chunk.js.map",
+    "index.html": "/PersonmanagerRedux/index.html",
+    "precache-manifest.c5d90b1bbb07974b0c2829594a38ac06.js": "/PersonmanagerRedux/precache-manifest.c5d90b1bbb07974b0c2829594a38ac06.js",
+    "service-worker.js": "/PersonmanagerRedux/service-worker.js",
+    "static/css/2.49b532b6.chunk.css.map": "/PersonmanagerRedux/static/css/2.49b532b6.chunk.css.map",
+    "static/css/main.897d10c4.chunk.css.map": "/PersonmanagerRedux/static/css/main.897d10c4.chunk.css.map",
+    "static/js/2.8f72cbdb.chunk.js.LICENSE.txt": "/PersonmanagerRedux/static/js/2.8f72cbdb.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bd5f8aed.js",
+    "static/css/2.49b532b6.chunk.css",
+    "static/js/2.8f72cbdb.chunk.js",
+    "static/css/main.897d10c4.chunk.css",
+    "static/js/main.81d4cf34.chunk.js"
+  ]
+}
