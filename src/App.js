@@ -1,106 +1,39 @@
-import React, { useState } from 'react';
-import { Button } from 'react-bootstrap';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'
+import React from "react";
+import { Button } from "react-bootstrap";
+import { ToastContainer } from "react-toastify";
+import { useSelector, useDispatch } from "react-redux";
+import "react-toastify/dist/ReactToastify.css";
 
-import Persons from './components/person/Persons';
-import Header from './components/common/Header'
-import simpleContext from './components/common/context/context';
-import AddPerson from './components/person/AddPerson';
-
+import Persons from "./components/person/Persons";
+import Header from "./components/common/Header";
+import AddPerson from "./components/person/AddPerson";
+import { showPerson } from "./actions/showPerson";
 
 const App = () => {
+  const showPersons = useSelector((state) => state.showPerson);
 
-    let [getPersons , setPersons] = useState( [
-                                            { id: 1, fullName: 'کیا احمدی' },
-                                            { id: 2, fullName: 'کیارش غلامی' },
-                                            { id: 3, fullName: 'کیانوش رفعتی' }
-                                        ] ) ;
-    let [getShowPersons , setShowPersons] = useState(true) ;
+  const dispatch = useDispatch();
 
+  return (
+    <div className="rtl text-center">
+      <Header appTitle="مدیریت کننده اشخاص" />
 
-    const handleShowPersons = () => {
-       setShowPersons( !getShowPersons );
-    }
-    
-    const handleDeletePerson = id => {
-        const persons = [...getPersons];
-        const filteredPersons = persons.filter(p => p.id !== id);
-        setPersons( filteredPersons ) ;
-        toast(`${persons.filter(p => p.id === id)[0].fullName} با موفقیت حذف شد`, {
-            position: 'bottom-right',
-            type: 'error',
-            closeOnClick: true
-        });
-    }
-    
-    const handleChangePerson = (event, id) => {
-        const allPersons  = getPersons;
-    
-        const personIndex = allPersons.findIndex(p => p.id === id);
-        allPersons[personIndex].fullName = event.target.value;
-        const persons = [...allPersons];
-        setPersons( persons );
-    }
-    
-    const handleAddPerson = () => {
-        const persons = [...getPersons];
-        let person = {
-            id: persons.length + 1,
-            fullName: document.getElementById('newName').value
-        }
-        
-        if (person.fullName !== '' && person.fullName !== ' ') {
-            persons.push(person);
-            setPersons( persons );
-            
-            toast(`${person.fullName} با موفقیت اضافه شد`, {
-                position: 'top-right',
-                closeOnClick: true,
-                type: 'success'
-            });
-        }
-    }
-    
-    const showPersons = getShowPersons;
-    
-    let person = null;
-    
-    if (showPersons) {
-        person = <Persons />;
-    }
-    
-    return (
-        
-        <simpleContext.Provider
-            value={{
-                persons : getPersons ,
-                handleDeletePersons : handleDeletePerson,
-                handleChangePersons : handleChangePerson,
-                handleAddPersons : handleAddPerson
-            }}
-        >
+      <AddPerson />
 
-            <div className='rtl text-center'>
-                
-                <Header appTitle='مدیریت کننده اشخاص' />                       
-                
+      <Button
+        onClick={() => {
+          dispatch(showPerson());
+        }}
+        variant={showPersons ? "info" : "danger"}
+      >
+        اشخاص را نشان بده
+      </Button>
 
-                <AddPerson />
+      {showPersons ? <Persons /> : null}
 
-                <Button
-                    onClick={handleShowPersons}
-                    variant={getShowPersons ? 'info' : 'danger'}  >
-                    اشخاص را نشان بده
-                </Button>
-
-                {person}
-
-                <ToastContainer />
-            </div>
-
-        </simpleContext.Provider>
-    ) ;
-}
+      <ToastContainer />
+    </div>
+  );
+};
 
 export default App;

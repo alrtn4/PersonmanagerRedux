@@ -1,18 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Person from './Person';
-import simpleContext from '../common/context/context';
+import { useSelector } from 'react-redux';
 
 const Persons = () => {
 
-    const context = useContext(simpleContext) ;
+    const persons = useSelector(state => state.persons) ;
 
     return <div>
-        {context.persons.map(person => (
+        {persons.map(person => (
             <Person 
                 key = {person.id} 
+                id = {person.id}
                 fullName = {person.fullName} 
-                deleted = {() => context.handleDeletePersons(person.id)}
-                change = {(event) => context.handleChangePersons(event , person.id)}
             />             
         ))}
     </div>;

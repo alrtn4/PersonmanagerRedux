@@ -1,12 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Alert, Badge } from 'react-bootstrap';
-import simpleContext from './context/context';
+import { useSelector } from 'react-redux';
 
 const Header = ({appTitle}) => {
 
-    const context = useContext(simpleContext) ;
-
-    let { persons } = context ;
+    const persons = useSelector(state => state.persons) ;
 
     let badgeStyle = '';
     if (persons.length >= 3) badgeStyle = 'info';
